@@ -11,7 +11,7 @@ if [[ -z ${PUBLIC_KEY} || -z ${END_POINT} ]]; then
   fi
   echo "[$(date -Iseconds)] Using server: ${server}"
   if [[ -z ${PUBLIC_KEY} ]]; then
-    PUBLIC_KEY=$(jq -r ".[$index].technologies[] | select( .identifier == "wireguard_udp" ) | .metadata[] | select( .name == "public_key" ) | .value" <<< "${recommendations}")
+    PUBLIC_KEY=$(jq -r ".[$index].technologies[] | select( .identifier == \"wireguard_udp\" ) | .metadata[] | select( .name == \"public_key\" ) | .value" <<< "${recommendations}")
   fi
   if [[ -z ${END_POINT} ]]; then
     END_POINT=$(jq -r ".[$index].hostname" <<< "${recommendations}"):51820
